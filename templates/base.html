@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>{% block title %}Titulo base{% endblock %}</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/stylesheet.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/font-awesome.css') }}">
+  {% block extracss %}
+  {% endblock %}
+  <script src="{{ url_for('static',filename='js/jquery.js') }}"></script>
+  <script src="{{ url_for('static',filename='js/popper.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='js/bootstrap.js') }}"></script>
+  <script src="{{ url_for('static',filename='js/bootstrap-notify.js') }}"></script>
+  {% block extrajs %}
+  {% endblock %}
+  <!--
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  -->
+  <script>
+    function notification(message){
+      $.notify({
+        icon: 'fa fa-exclamation-triangle',
+        message: message,
+      },{
+        type: "warning",
+        placement: {
+          from: "top",
+          align: "right"
+        },
+        animate: {
+          enter: 'animated fadeInDown',
+          exit: 'animated fadeOutUp'
+        },
+      });
+    }
+    function search(){
+      //console.log("Adentro");
+      window.location="/users/"+document.getElementById("search-bar").value;
+    }
+  </script>
+</head>
+<body {% block bodyParams %}{% endblock %}>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">
+      <div class="form-inline">
+        <img src="{{ url_for('static',filename='img/logo.png') }}" width="25" height="25" class="d-inline-block align-top" alt="">
+        <a class="navbar-brand" href="/" style="font-family:Helvetica;font-size:23px;margin-left:-15px">
+          imer
+        </a>
+      </div>
+    </a>
+    <form class="form-inline mr-auto ml-auto">
+      <div class="form-group">
+        <input id="search-bar" class="form-control mr-sm-1" type="search" placeholder="Username" aria-label="Username">
+        <button class="btn btn-outline-light my-0 my-sm-0" type="button" onclick="search();"><i class="fa fa-search" aria-hidden="true"></i></button>
+      </div>
+    </form>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link" href="/galeria"><button type="button" class="btn btn-outline-light">Galeria</button></a>
+        <a class="nav-item nav-link" href="/records"><button type="button" class="btn btn-outline-light">Records</button></a>
+        <a class="nav-item">  </a>
+        {% if username %}
+          <a class="nav-item nav-link" href="/users/{{ username }}"><button type="button" class="btn btn-outline-light">{{ username }}</button></a>
+          <a class="nav-item nav-link" href="/logout"><button type="button" class="btn btn-outline-light">Cerrar sesion</button></a>
+        {% else %}
+          <a class="nav-item nav-link" href="/login"><button type="button" class="btn btn-outline-light">Inicia sesion</button></a>
+          <a class="nav-item nav-link" href="/signup"><button type="button" class="btn btn-outline-light">Registrate</button></a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+
+{% block content %}
+  <h1>Contenido base</h1>
+{% endblock %}
+<script>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        notification('{{ message }}');
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</script>
+</body>
+</html>

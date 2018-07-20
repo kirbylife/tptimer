@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Galeria{% endblock %}
+
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/owl.carousel.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/owl.theme.default.css') }}">
+{% endblock %}
+{% block extrajs %}
+<script src="{{ url_for('static',filename='js/owl.carousel.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <br>
+  <h1>Galeria</h1>
+  <div class="owl-carousel">
+    <div><img width="480" height="360" src="{{ url_for('static',filename='img/carousel/wca.jpg') }}"></div>
+    <div><img width="480" height="360" src="{{ url_for('static',filename='img/carousel/Erno.jpg') }}"></div>
+    <div><img width="480" height="360" src="{{ url_for('static',filename='img/carousel/dayan.jpg') }}"></div>
+    <div><img width="480" height="360" src="{{ url_for('static',filename='img/carousel/traiphum.jpg') }}"></div>
+    <div><img width="480" height="360" src="{{ url_for('static',filename='img/carousel/oskar.jpg') }}"></div>
+  </div>
+  <script>
+    $('.owl-carousel').owlCarousel({
+      margin:10,
+      loop:true,
+      autoWidth:true,
+      items:4
+    })
+    $(document).ready(function(){
+      $(".owl-carousel").owlCarousel();
+    });
+  </script>
+</div>
+{% endblock %}
+<!--
+<div class="carousel-item active">
+          <img class="d-block mx-auto img-fluid" width="640" height="360" src="{{ url_for('static',filename='img/carousel/wca.jpg') }}">
+          <div class="carousel-caption d-none d-md-block">
+              <h3 style="color:red">WCA</h3>
+              <p style="color:red">Asociacion encargada de regular los torneos a lo largo del mundo.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block mx-auto img-fluid" width="640" height="360" src="{{ url_for('static',filename='img/carousel/Erno.jpg') }}">
+          <div class="carousel-caption d-none d-md-block">
+              <h3>Erno Rubik</h3>
+              <p>Creador del cubo de rubik 3x3x3, 2x2x2, entre otros.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block mx-auto img-fluid" width="640" height="360" src="{{ url_for('static',filename='img/carousel/dayan.jpg') }}">
+          <div class="carousel-caption d-none d-md-block">
+              <h3>Dayan cubes</h3>
+              <p>Primer marca en crear cubos enfocados a competicion</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block mx-auto img-fluid" width="640" height="360" src="{{ url_for('static',filename='img/carousel/traiphum.jpg') }}">
+          <div class="carousel-caption d-none d-md-block">
+              <h3>Cubos exoticos</h3>
+              <p>aparte de los de competicion, existen puzzles con la misma mecanica del cubo de Rubik pero con distintas dificultades</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block mx-auto img-fluid" width="640" height="360" src="{{ url_for('static',filename='img/carousel/oskar.jpg') }}">
+          <div class="carousel-caption d-none d-md-block">
+              <h3>Oskar</h3>
+              <p>Oskar es una de las mentes mas brillantes al momento de diseñar puzzles muy exoticos</p>
+          </div>
+        </div>
+-->

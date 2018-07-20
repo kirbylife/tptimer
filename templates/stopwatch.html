@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block extrajs %}
+<script src=" {{ url_for('static',filename='js/stopwatch.js') }} "></script>
+<!--<script src="../static/js/stopwatch.js"></script>-->
+<script>
+    var state=false;
+    var run=true;
+        $(window).keydown(function(e) {
+            if (e.which == 32) {
+                state=true;
+                return !(e.keyCode == 32);
+            }
+        });
+        $(window).keyup(function(e) {
+            if (e.which == 32) {
+                if(state){
+                    state=false;
+                    if(run){
+                        reset();
+                        start();
+                        run=false;
+                    }
+                    else{
+                        stop();
+                        run=true;
+                    }
+                }
+            }
+        });
+</script>
+{% endblock %}
+<!--<link rel="stylesheet" type="text/css" href="../static/css/stopwatch.css">-->
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/stopwatch.css') }}">
+{% endblock %}
+{% block title %}Cronometro{% endblock %}
+{% block bodyParams %}onload="show()"{% endblock %}
+{% block content %}
+<div>
+    <h2><br><span id="scramble"></span><br><span id="time"></span></h2>
+</div>
+<div class="container">
+    <div>
+        <select id="cube" onchange="setScramble()">
+            <option value="3x3x3">3x3x3 WCA</option>
+            <option value="2x2x2">2x2x2 WCA</option>
+            <option value="4x4x4">4x4x4 WCA</option>
+            <option value="4x4x4">4x4x4 WCA</option>
+            <option value="5x5x5">5x5x5 WCA</option>
+            <option value="6x6x6">6x6x6 WCA</option>
+            <option value="7x7x7">7x7x7 WCA</option>
+            <option value="piraminx">Piraminx WCA</option>
+            <option value="megaminx">Megaminx WCA</option>
+            <option value="squareone">Square-one WCA</option>
+            <option value="skewb">Skewb WCA</option>
+            <option value="clock">Clock WCA</option>
+        </select>
+    </div>
+    <br>
+    <div>
+        <div style="float:left">
+            <b>Media: </b>
+            <a id="media"></a>
+        </div>
+        <div style="float:right">
+            <b>Desviacion estandar: </b>
+            <a id="desviacion"></a>
+        </div>
+        <br>
+        <div style="float:left">
+            <b>Mejor: </b>
+            <a id="mejor"></a>
+        </div>
+        <div style="float:right">
+            <b>Peor :</b>
+            <a id="peor"></a>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div>
+        <ul id="total">
+        </ul>
+    </div>
+</div>
+<!--
+<input type="button" value="start" onclick="start()">
+<input type="button" value="stop" onclick="stop()">
+<input type="button" value="reset" onclick="reset()">
+-->
+{% endblock %}

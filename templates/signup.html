@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrate{% endblock %}
+
+{% block content %}
+    {% from '_macro.html' import render_field %}
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-8 col-lg-offset-2 col-md-2 col-md-offset-1">
+                <h2 style="text-align:center">Crea una cuenta nueva</h2>
+                <form method="POST" class="sentMessage" id="contactForm">
+
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                    <div class="control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            {{ render_field(form.username, class="form-control" )}}
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            {{ render_field(form.wcaId, class="form-control" )}}
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            {{ render_field(form.email, class="form-control" )}}
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            {{ render_field(form.password, class="form-control" )}}
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <br>
+                    <div id="sucess"></div>
+                    <div class="form-group col-xs-12">
+                        <button type="submit" class="btn btn-default">Registrate</button>
+                        <a style="font-size:15px;float:right">los campos con * son obligatorios</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

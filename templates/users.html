@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}{{ user }}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <br>
+    <h1>{{ user }}</h1>
+
+    {% if t3 %}
+        <br>
+        <h2>3x3x3</h2>
+        <table style="width:100%">
+            <th>Tiempo</th><th>Scramble</th>
+                {% for time in t3 %}
+                    <tr><td>{{ time.displayTime }}</td><td>{{ time.scramble }}</td>
+                {% endfor %}
+        </table>
+    {% endif %}
+
+    {% if t2 %}
+        <br>
+        <h2>2x2x2</h2>
+        <table style="width:100%">
+            <th>Tiempo</th><th>Scramble</th>
+                {% for time in t2 %}
+                    <tr><td>{{ time.displayTime }}</td><td>{{ time.scramble }}</td>
+                {% endfor %}
+        </table>
+    {% endif %}
+
+    {% if t4 %}
+        <br>
+        <h2>4x4x4</h2>
+        <table style="width:100%">
+            <th>Tiempo</th><th>Scramble</th>
+                {% for time in t4 %}
+                    <tr><td>{{ time.displayTime }}</td><td>{{ time.scramble }}</td>
+                {% endfor %}
+        </table>
+    {% endif %}
+
+    {% if t5 %}
+        <br>
+        <h2>5x5x5</h2>
+        <table style="width:100%">
+            <th>Tiempo</th><th>Scramble</th>
+                {% for time in t5 %}
+                    <tr><td>{{ time.displayTime }}</td><td>{{ time.scramble }}</td>
+                {% endfor %}
+        </table>
+    {% endif %}
+
+    {% if t6 %}
+        <br>
+        <h2>6x6x6</h2>
+        <table style="width:100%">
+            <th>Tiempo</th><th>Scramble</th>
+                {% for time in t6 %}
+                    <tr><td>{{ time.displayTime }}</td><td>{{ time.scramble }}</td>
+                {% endfor %}
+        </table>
+    {% endif %}
+
+    {% if t7 %}
+        <br>
+        <h2>7x7x7</h2>
+        <table style="width:100%">
+            <th>Tiempo</th><th>Scramble</th>
+                {% for time in t7 %}
+                    <tr><td>{{ time.displayTime }}</td><td>{{ time.scramble }}</td>
+                {% endfor %}
+        </table>
+    {% endif %}
+
+    {% if tsqr %}
+        <br>
+        <h2>Square-one</h2>
+        <table style="width:100%">
+            <th>Tiempo</th><th>Scramble</th>
+                {% for time in tsqr %}
+                    <tr><td>{{ time.displayTime }}</td><td>{{ time.scramble }}</td>
+                {% endfor %}
+        </table>
+    {% endif %}
+
+    {% if tskw %}
+        <br>
+        <h2>Skewb</h2>
+        <table style="width:100%">
+            <th>Tiempo</th><th>Scramble</th>
+                {% for time in tskw %}
+                    <tr><td>{{ time.displayTime }}</td><td>{{ time.scramble }}</td>
+                {% endfor %}
+        </table>
+    {% endif %}
+
+    {% if tmega %}
+        <br>
+        <h2>Megaminx</h2>
+        <table style="width:100%">
+            <th>Tiempo</th><th>Scramble</th>
+                {% for time in tmega %}
+                    <tr><td>{{ time.displayTime }}</td><td>{{ time.scramble }}</td>
+                {% endfor %}
+        </table>
+    {% endif %}
+
+    {% if tpira %}
+        <br>
+        <h2>Piraminx</h2>
+        <table style="width:100%">
+            <th>Tiempo</th><th>Scramble</th>
+                {% for time in tpira %}
+                    <tr><td>{{ time.displayTime }}</td><td>{{ time.scramble }}</td>
+                {% endfor %}
+        </table>
+    {% endif %}
+</div>
+
+
+{% endblock %}
